@@ -1,0 +1,21 @@
+version: '2'
+services:
+  etcd:
+    image: quay.io/coreos/etcd:v3.3.0
+    container_name: etcd
+    restart: always
+    ports:
+      - 2379:2379
+      - 2380:2380
+    volumes:
+      - /root/ha/etcd/data:/etcd-data
+    environment:
+      ETCD_DATA_DIR: /etcd-data
+      ETCD_NAME: etcd3
+      ETCD_INITIAL_ADVERTISE_PEER_URLS: http://192.168.21.16:2380
+      ETCD_ADVERTISE_CLIENT_URLS: http://192.168.21.16:2379
+      ETCD_LISTEN_PEER_URLS: http://0.0.0.0:2380
+      ETCD_LISTEN_CLIENT_URLS: http://0.0.0.0:2379
+      ETCD_INITIAL_CLUSTER: etcd3=http://192.168.21.16:2380,etcd2=http://192.168.21.15:2380,etcd1=http://192.168.21.14:2380
+      ETCD_INITIAL_CLUSTER_STATE: new
+      ETCD_INITIAL_CLUSTER_TOKEN: etcd-123456
