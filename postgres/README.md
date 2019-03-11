@@ -23,3 +23,9 @@ Then, you can access the PostgeSQL cluster via the loadbalancer on port `5432`.
 If you want to check the status of each Patroni instances, access haproxy's status endpoint as: `http://localhost:8080/`. You will get:
 
 ![patroni-status.png](./images/patroni-status.png)
+
+# How To Test
+
+You can use GUI tool [pgAdmin](https://www.pgadmin.org/) to test the PostgreSQL cluster. Stop/start patroni instances and try the service.
+
+![pg-admin.png](./images/pg-admin.png)
